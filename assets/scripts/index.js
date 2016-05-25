@@ -5,15 +5,15 @@
 
 const getBooksHandler = function (event) {
   event.preventDefault();
+  let number = $('#book-number').val();
+  if(number) {
+   libraryApi.getBooks().done(ui.singleBook);
+ } else {
   libraryApi.getBooks().done(ui.onSuccess);
-};
-const getBookHandler = function (event) {
-  event.preventDefault();
-  libraryApi.getBooks().done(ui.singleBook);
+}
 };
 
 // On document ready
 $(() => {
   $('#get-books').on('click', getBooksHandler);
-  $('#get-book').on('click', getBookHandler);
 });
